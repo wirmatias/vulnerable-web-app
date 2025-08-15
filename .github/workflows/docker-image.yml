@@ -26,7 +26,7 @@ jobs:
 
       # --- Este es el nuevo paso para instalar la CLI de Heroku ---
       - name: Setup Heroku CLI
-        uses: heroku/actions/setup@v3.0.4
+        uses: heroku/actions/setup@v2.0.4
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
 
