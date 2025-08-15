@@ -19,7 +19,7 @@ jobs:
         # Or for container deployment:
         run: |
          heroku container:login
-         heroku container:push web -a your-app-name
-         heroku container:release web -a your-app-name
+         heroku container:push web -a app-vulnerable2
+         heroku container:release web -a app-vulnerable2
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
