@@ -24,10 +24,12 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/nombre-imagen:latest
 
-    - name: Deploy to provider (e.g., Heroku)
+    - name: Install Heroku CLI
       run: |
-           docker context create heroku-context
-           docker context use heroku-context
-           heroku container:login
-           heroku container:push web -a app-vulnerable2
-           heroku container:release web -a tu-app-en-heroku
+        npm install -g heroku # O el comando de instalación para tu herramienta
+
+    - name: Deploy to Heroku
+      run: |
+        heroku container:login
+        heroku container:push web -a app-vulnerable2
+        heroku container:release web -a app-vulnerable2
