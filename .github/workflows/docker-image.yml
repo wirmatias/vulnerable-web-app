@@ -24,12 +24,11 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/nombre-imagen:latest
 
-    - name: Install Heroku CLI
-      run: |
-        npm install -g heroku # O el comando de instalación para tu herramienta
-
     - name: Deploy to Heroku
-      run: |
-        heroku container:login
-        heroku container:push web -a app-vulnerable2
-        heroku container:release web -a app-vulnerable2
+      uses: AkhileshNS/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "app-vulnerable2" # Reemplaza con el nombre de tu app
+        heroku_email: ${{secrets.HEROKU_EMAIL}}
+        docker_heroku_process_type: "web"
+    
